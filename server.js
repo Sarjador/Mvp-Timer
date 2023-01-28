@@ -10,11 +10,11 @@ const bot = new Discord.Client({
 
 const timeoffset = '-4';
 
-bot.on('ready', function (evt) {
+bot.on('ready', function(evt) {
   setInterval(minuteCallback.bind(this), 60000)
 });
 
-bot.on('message', function (user, userID, channelID, message, evt) {
+bot.on('message', function(user, userID, channelID, message, evt) {
   // Our bot needs to know if it will execute a command
   // It will listen for messages that will start with `!`
   if (message.substring(0, 1) == '!') {
@@ -44,7 +44,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
           return 0;
         })
       let msg = sortedList.map(mvp => (mvp[1]['min'] - Math.floor((new Date() - new Date(mvp[1]['death'])) / 60000)) + ' min ' + fancyName(mvp[0]) + ' (' + mvp[1]['map'] + ')\n').join('')
-      if (sortedList.length == 0) msg = 'Tienes que indicar la hora de la muerte. "hh:mm" '
+      if (sortedList.length == 0) msg = `${user} tienes que indicar la hora de la muerte. "HH:MM" `
       bot.sendMessage({
         to: channelID,
         message: msg
@@ -56,15 +56,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
       bot.sendMessage({
         to: channelID,
         message: `
-        **!mvp_name <+-minutes/timestring XX:XX>** will track the named mvp\n**!mvp_name del** will delete the given record\n**!mvp_name** will return respawn information (last message will be updated every minute)\n**!list** will display a list sorted by earliest respawn\n**!help** will display this help message\n`
+        **!mvp_name <+-minutes/timestring XX:XX>** llevará el seguimiento del MVP especificado\n**!mvp_name del** borrará el registro\n**!mvp_name** devolverá información con el respawn del mvp especificado (el último mensaje se actualizará cada minuto)\n**!list** mostrará una lista ordenada según la reaparición más inminente\n**!help** mostrará este mensaje de ayuda :)\n`
       })
       return
     }
 
-    if (args[0].toLowerCase() == 'hallo') {
+    if (args[0].toLowerCase() == 'hola') {
       bot.sendMessage({
         to: channelID,
-        message: (user == 'Noil') ? 'Hallo DADDDY ** <3' : `Hallo ${user} <3!`
+        message: (user == 'Sarjador') ? 'Hola crack ** <3' : `Holiwi ${user} <3!`
       })
       return
     }
@@ -92,7 +92,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         let now = new Date();
         // adding 3 minutes offset to server time
         //comentando la linea siguiente cuenta la hora de la muerte justo al horario España
-        //death = Date.parse(`${now.toDateString()} ${timestring} GMT`) - ((timeoffset * 60 * 60 * 1000) + (3 * 60 * 1000))
+        //death = Date.parse(`${now.toDateString()} ${timestring} GMT+1`) - ((timeoffset * 60 * 60 * 1000) + (3 * 60 * 1000))
       }
     }
 
@@ -103,7 +103,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
       mvp = resolveAlias(MVP[mvp])
       bot.sendMessage({
         to: channelID,
-        message: `*${fancyName(alias)}* alias *${fancyName(mvp)}*\n @Beware alguien ha usado el bot.`
+        message: `*${fancyName(alias)}* alias *${fancyName(mvp)}*\n${user} feliz cacería.`
       })
     }
 
@@ -112,10 +112,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     })
 
     if (candidates[0] !== mvp) {
-      msg += (candidates.length == 0) ? `Primo, no hay ningun MVP con el nombre de *${fancyName(mvp)}*` : 'Baka, did you mean?\n'
+      msg += (candidates.length == 0) ? `${user}, no se ha encontrado ningún MVP con nombre *${fancyName(mvp)}*` : `Oye ${user}, quizás querías decir...?\n`
       candidates.forEach(name => {
         let resolved = resolveAlias(name)
-        msg += `${fancyName(name)}${(resolved != name) ? ' (Alias for ' + fancyName(resolved) + ')' : ''} (${MVP[resolved]['map']})\n`
+        msg += `${fancyName(name)}${(resolved != name) ? ' (Alias para ' + fancyName(resolved) + ')' : ''} (${MVP[resolved]['map']})\n`
       })
     } else {
       // could identify
@@ -123,7 +123,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         delete MVP[mvp]['death']
         bot.sendMessage({
           to: channelID,
-          message: `${fancyName(mvp)} record deleted\n`
+          message: `${fancyName(mvp)} registro borrado\n`
         });
       } else
         if (death) {
@@ -134,23 +134,23 @@ bot.on('message', function (user, userID, channelID, message, evt) {
           // adding 3 minutes offset to server time
           //comentada la linea para que salga la hora del servidor España
           //let servertime = new Date(death + (timeoffset * 60 * 60 * 1000) + (3 * 60 * 1000))
-          let servertime = new Date(death+3600000)
-          servertime = servertime.toTimeString('UTC').split(':').slice(0,2).join(':')
+          let servertime = new Date(death + 3600000)
+          servertime = servertime.toTimeString('UTC').split(':').slice(0, 2).join(':')
           bot.sendMessage({
             to: channelID,
-            message: `${fancyName(mvp)} ha muerto a las ${servertime} (hora España) y respawneara en ${minRespawnInMin - 10} minutos.\n`
+            message: `${fancyName(mvp)} ha muerto a las ${servertime} (hora de España) y reaparecerá en ${minRespawnInMin - 10} minutos.\n`
           });
         }
       if (MVP[mvp]['death']) {
         let deadForMin = Math.floor((new Date() - new Date(MVP[mvp]['death'])) / 60000);
-        let prueba = time;
-        let minMPVReal =  new Date(death + (timeoffset * 60 * 60 * 1000) + (3 * 60 * 1000));
+        //let prueba = time;
+        //let minMPVReal =  new Date(death + (timeoffset * 60 * 60 * 1000) + (3 * 60 * 1000));
         let minRespawnInMin = MVP[mvp]['min'] - deadForMin;
         let maxRespawnInMin = MVP[mvp]['max'] - deadForMin;
         if (minRespawnInMin == maxRespawnInMin) {
           bot.sendMessage({
             to: channelID,
-            message: `${fancyName(mvp)} will respawn in ${minRespawnInMin}!`
+            message: `@everyone ${fancyName(mvp)} reaparecerá en ${minRespawnInMin}!`
           }, (error, result) => {
             MVP[mvp]['msgID'] = result.id,
               MVP[mvp]['channelID'] = channelID
@@ -158,13 +158,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         }
         bot.sendMessage({
           to: channelID,
-          message: `${fancyName(mvp)} tiene un tiempo de respawn entre ${minRespawnInMin} y ${maxRespawnInMin} minutos!`
+          message: `${fancyName(mvp)} tiene un tiempo de reaparición entre ${minRespawnInMin} y ${maxRespawnInMin} minutos!`
         }, (error, result) => {
           MVP[mvp]['msgID'] = result.id,
             MVP[mvp]['channelID'] = channelID
         });
       } else {
-        msg += 'Tienes que indicar la hora de la muerte. "HH:MM"\n'
+        msg += `${user} tienes que indicar la hora de la muerte. "HH:MM"\n`
       }
 
     }
@@ -193,48 +193,48 @@ function resolveAlias(mvp) {
 }
 
 function minuteCallback() {
-    for (let key in MVP) {
-      if (MVP[key]['death']) {
-        let deadForMin = Math.floor((new Date() - new Date(MVP[key]['death'])) / 60000);
-        let minRespawnInMin = MVP[key]['min'] - deadForMin;
-        let maxRespawnInMin = MVP[key]['max'] - deadForMin;
+  for (let key in MVP) {
+    if (MVP[key]['death']) {
+      let deadForMin = Math.floor((new Date() - new Date(MVP[key]['death'])) / 60000);
+      let minRespawnInMin = MVP[key]['min'] - deadForMin;
+      let maxRespawnInMin = MVP[key]['max'] - deadForMin;
 
-        // 5 minutes timer
-        if (minRespawnInMin == 5) {
-          bot.sendMessage({
-            to: MVP[key]['channelID'],
-            message: `${fancyName(key)} could respawn in 5 minutes!`
-          })
-        }
-
-        // could have been respawned
-        if (maxRespawnInMin != 0 && minRespawnInMin == 0) {
-          bot.sendMessage({
-            to: MVP[key]['channelID'],
-            message: `${fancyName(key)} could be respawned!`
-          })
-        }
-
-        if (maxRespawnInMin == 0) {
-          bot.sendMessage({
-            to: MVP[key]['channelID'],
-            message: `${fancyName(key)} has been respawned!`
-          })
-          delete MVP[key]['death']
-        }
-
-        if (MVP[key]['msgID']) {
-          let msg = (minRespawnInMin == maxRespawnInMin) ? `${fancyName(key)} will respawn in ${minRespawnInMin}!` : `${fancyName(key)} respawneara en ${minRespawnInMin} o ${maxRespawnInMin} minutos!`
-          bot.editMessage({
-            channelID: MVP[key]['channelID'],
-            messageID: MVP[key]['msgID'],
-            message: msg
-          })
-        }
-
-      } else {
-        continue
+      // 5 minutes timer
+      if (minRespawnInMin == 5) {
+        bot.sendMessage({
+          to: MVP[key]['channelID'],
+          message: `@everyone ${fancyName(key)} puede que reaparezca en 5 minutos!`
+        })
       }
+
+      // could have been respawned
+      if (maxRespawnInMin != 0 && minRespawnInMin == 0) {
+        bot.sendMessage({
+          to: MVP[key]['channelID'],
+          message: `@everyone ${fancyName(key)} puede que ya haya reaparecido!`
+        })
+      }
+
+      if (maxRespawnInMin == 0) {
+        bot.sendMessage({
+          to: MVP[key]['channelID'],
+          message: `@everyone ${fancyName(key)} ha reaparecido!`
+        })
+        delete MVP[key]['death']
+      }
+
+      if (MVP[key]['msgID']) {
+        let msg = (minRespawnInMin == maxRespawnInMin) ? `@everyone ${fancyName(key)} reaparecerá en ${minRespawnInMin}!` : `@everyone ${fancyName(key)} respawneará en ${minRespawnInMin} o ${maxRespawnInMin} minutos!`
+        bot.editMessage({
+          channelID: MVP[key]['channelID'],
+          messageID: MVP[key]['msgID'],
+          message: msg
+        })
+      }
+
+    } else {
+      continue
     }
   }
-require("http").createServer(async (req,res) => { res.statusCode = 200; res.write("ok"); res.end(); }).listen(3000, () => console.log("Now listening on port 3000"));
+}
+require("http").createServer(async (req, res) => { res.statusCode = 200; res.write("ok"); res.end(); }).listen(3000, () => console.log("Now listening on port 3000"));
