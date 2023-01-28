@@ -1,0 +1,254 @@
+{
+  "AMON_RA": {
+    "min": 60,
+    "max": 70,
+    "map": "moc_pryd06"
+  },
+  "AMON": "AMON_RA",
+  "BACSOJIN": {
+    "min": 117,
+    "max": 127,
+    "map": "lou_dun03"
+  },
+  "WHITE": "BACSOJIN",
+  "BAPHOMET": {
+    "min": 120,
+    "max": 130,
+    "map": "prt_maze03"
+  },
+  "BAPHO": "BAPHOMET",
+  "BIO": {
+    "min": 100,
+    "max": 130,
+    "map": "lhz_dun03"
+  },
+  "ASSA": "BIO",
+  "LORD": "BIO",
+  "SNIPER": "BIO",
+  "HIGH_WIZARD": "BIO",
+  "HIGH_PRIEST": "BIO",
+  "WHITESMITH": "BIO",
+  "DARK_LORD": {
+    "min": 60,
+    "max": 70,
+    "map": "gl_chyard"
+  },
+  "DETALE": {
+    "min": 180,
+    "max": 190,
+    "map": "abyss_03"
+  },
+  "DOPPELGANGER": {
+    "min": 120,
+    "max": 130,
+    "map": "gef_dun02"
+  },
+  "DOPPEL": "DOPPELGANGER",
+  "DRACULA": {
+    "min": 60,
+    "max": 70,
+    "map": "gef_dun01"
+  },
+  "DRAKE": {
+    "min": 120,
+    "max": 130,
+    "map": "treasure02"
+  },
+  "EDDGA": {
+    "min": 120,
+    "max": 130,
+    "map": "pay_fild11"
+  },
+  "EVIL_SNAKE_LORD": {
+    "min": 94,
+    "max": 104,
+    "map": "gon_dun03"
+  },
+  "EVIL": "EVIL_SNAKE_LORD",
+  "GARM": {
+    "min": 120,
+    "max": 130,
+    "map": "xmas_fild01"
+  },
+  "HATII": "GARM",
+  "GOLDEN_THIEF_BUG": {
+    "min": 60,
+    "max": 70,
+    "map": "prt_sewb4"
+  },
+  "GTB": "GOLDEN_THIEF_BUG",
+  "INCANTATION_SAMURAI": {
+    "min": 91,
+    "max": 101,
+    "map": "ama_dun03"
+  },
+  "KIEL_D-01": {
+    "min": 120,
+    "max": 180,
+    "map": "kh_dun02"
+  },
+  "KIEL": "KIEL_D-01",
+  "STORMY_KNIGHT": {
+    "min": 60,
+    "max": 70,
+    "map": "xmas_dun02"
+  },
+  "LADY_TANEE": {
+    "min": 420,
+    "max": 430,
+    "map": "ayo_dun02"
+  },
+  "LORD_OF_DEATH": {
+    "min": 133,
+    "max": 133,
+    "map": "niflheim"
+  },
+  "LOD": "LORD_OF_DEATH",
+  "MAYA": {
+    "min": 120,
+    "max": 130,
+    "map": "anthell02"
+  },
+  "MISTRESS": {
+    "min": 120,
+    "max": 130,
+    "map": "mjolnir_04"
+  },
+  "MISSY": "MISTRESS",
+  "MOONLIGHT": {
+    "min": 60,
+    "max": 70,
+    "map": "pay_dun04"
+  },
+  "MOONI": "MOONLIGHT",
+  "ORC_HERO1": {
+    "min": 60,
+    "max": 70,
+    "map": "gef_fild14"
+  },
+  "ORC_HERO2": {
+    "min": 1440,
+    "max": 1450,
+    "map": "gef_fild02"
+  },
+  "ORC_LORD": {
+    "min": 120,
+    "max": 130,
+    "map": "gef_fild10"
+  },
+  "OSIRIS": {
+    "min": 60,
+    "max": 70,
+    "map": "moc_pryd04"
+  },
+  "PHARAOH": {
+    "min": 60,
+    "max": 70,
+    "map": "in_sphinx5"
+  },
+  "PHREEONI": {
+    "min": 120,
+    "max": 130,
+    "map": "moc_fild15"
+  },
+  "PHREEONI2": {
+    "min": 120,
+    "max": 130,
+    "map": "moc_fild17"
+  },
+  "RSX_0806": {
+    "min": 125,
+    "max": 135,
+    "map": "ein_dun02"
+  },
+  "RSX": "RSX_0806",
+  "TAO_GUNKA": {
+    "min": 300,
+    "max": 310,
+    "map": "beach_dun"
+  },
+  "TAO": "TAO_GUNKA",
+  "THANATOS": {
+    "min": 120,
+    "max": 120,
+    "map": "thana_boss"
+  },
+  "TURTLE_GENERAL": {
+    "min": 60,
+    "max": 70,
+    "map": "tur_dun04"
+  },
+  "TURTLE": "TURTLE_GENERAL",
+  "VESPER": {
+    "min": 120,
+    "max": 130,
+    "map": "jupe_core"
+  },
+  "YGNIZEM": {
+    "min": 120,
+    "max": 130,
+    "map": "lhz_dun02"
+  },
+  "EGNIGEM": "YGNIZEM",
+  "ANGELING1": {
+    "min": 60,
+    "max": 90,
+    "map": "pay_fild04"
+  },
+  "ANGELING2": {
+    "min": 60,
+    "max": 90,
+    "map": "xmas_dun01"
+  },
+  "ANGELING3": {
+    "min": 60,
+    "max": 90,
+    "map": "yuno_fild03"
+  },
+  "ARCHANGELING": {
+    "min": 60,
+    "max": 63,
+    "map": "yuno_fild05"
+  },
+  "CAT_O_NINE_TAIL": {
+    "min": 60,
+    "max": 180,
+    "map": "pay_dun04"
+  },
+  "DEVILING1": {
+    "min": 120,
+    "max": 180,
+    "map": "pay_fild04"
+  },
+    "DEVILING2": {
+    "min": 60,
+    "max": 90,
+    "map": "yuno_fild03"
+  },
+  "DRAGON_FLY": {
+    "min": 60,
+    "max": 90,
+    "map": "moc_fild18"
+  },
+  "CLIP": "DRAGON_FLY",
+  "GHOSTRING1": {
+    "min": 60,
+    "max": 90,
+    "map": "pay_fild04"
+  },
+  "GHOSTRING2": {
+    "min": 113,
+    "max": 170,
+    "map": "gprt_maze03"
+  },
+  "GHOSTRING3": {
+    "min": 33,
+    "max": 53,
+    "map": "treasure02"
+  },
+  "MAYA_PURPLE": {
+    "min": 120,
+    "max": 180,
+    "map": "anthell01"
+  }
+}
